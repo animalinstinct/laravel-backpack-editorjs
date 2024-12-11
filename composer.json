@@ -1,0 +1,24 @@
+{
+  "name": "AnimalInstinct/laravel-backpack-editorjs",
+  "description": "EditorJS field for the Laravel Backpack",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aleksandr Makarov",
+      "email": "animalinstinct@protonmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "AnimalInstinct\\LaravelBackpackEditorJs\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AnimalInstinct\\LaravelBackpackEditorJs\\LaravelBackpackEditorJsServiceProvider"
+      ]
+    }
+  },
+  "require": {}
+}
