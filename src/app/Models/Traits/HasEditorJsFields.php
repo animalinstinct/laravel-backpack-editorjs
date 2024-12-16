@@ -7,15 +7,9 @@ use Illuminate\Support\Facades\Log;
 
 trait HasEditorJsFields
 {
-    // public static function bootHasEditorJsFields()
-    // {
-    //     static::retrieved(function ($model) {
-    //     });
-    // }
-
     public function __get($key)
     {
-        if (in_array($key, $this->editorJsFields)) {
+        if (config('laravel-backpack-editorjs.context') == 'default' && in_array($key, $this->editorJsFields)) {
             $value = $this->attributes[$key] ?? null;
 
             if ($this->isValidJson($value)) {

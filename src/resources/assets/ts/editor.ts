@@ -1,11 +1,11 @@
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import ImageTool from "@editorjs/image";
 import Header from "@editorjs/header";
+import Quote from '@editorjs/quote';
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
 
 export function editor(fieldName: string, appUrl: string, value?: OutputData) {
-  console.log('Editor::appUrl: ', appUrl);
   const editor = new EditorJS({
     data: value,
     holder: `editor_${fieldName}`,
@@ -23,6 +23,7 @@ export function editor(fieldName: string, appUrl: string, value?: OutputData) {
         },
       },
       header: Header,
+      quote: Quote
     },
     onChange: (_api, _event) => {
       editor

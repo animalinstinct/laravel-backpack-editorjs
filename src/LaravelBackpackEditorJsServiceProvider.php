@@ -8,6 +8,8 @@ class LaravelBackpackEditorJsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        config(['laravel-backpack-editorjs.context' => 'default']);
+
         $this->loadRoutes();
         $this->publishFiles();
     }

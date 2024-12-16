@@ -42,6 +42,18 @@ Run the install script
 php artisan backpack-editorjs:install
 ```
 
+## Configuration
+
+Add middleware to the Backpack base config. The middleware would set context to not use the Laravel-Editor.js parser for the backpack routes.
+
+```php
+    'middleware_class' => [
+        //...
+        \AnimalInstinct\LaravelBackpackEditorJs\app\Http\Middlewares\SetEditorJsParserContext::class,
+        //...
+    ]
+```
+
 ## Usage
 
 In the Backpack controllers, use 'editorjs' as a field type
@@ -78,6 +90,7 @@ The first argument is a current model, then field name and backup field to show 
 
 ```php
 //YourAnyCrudController.php
+use AnimalInstinct\LaravelBackpackEditorJs\app\Http\Controllers\Traits\EditorJsField;
 
 use EditorJsField;
 
