@@ -69,3 +69,20 @@ use HasEditorJsFields;
 // Declare the fields
 protected $editorJsFields = ['description','anyfield'];
 ```
+
+### Backup fields
+
+The backup field will be used if the field value is not a valid JSON (for cases when you have another editor before and desire to save it as is). To set that kind a field import EditorJsField trait, use it in your CrudController, the call the trait method EditorJsField::withBackup() in the field type.
+
+The first argument is a current model, then field name and backup field to show instead.
+
+```php
+//YourAnyCrudController.php
+
+use EditorJsField;
+
+$this->crud->addField([
+    'name' => 'description',
+    'label' => 'Description',
+    'type' => EditorJsField::withBackup($this->crud->getCurrentEntry(), 'description', 'ckeditor'),
+]);
