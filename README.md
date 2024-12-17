@@ -1,28 +1,26 @@
 # Laravel Backpack EditorJs field
 
-Package adds new editorjs field to the Laravel Backpack admin panel.
+Package adds the editorjs field to the Laravel Backpack admin panel.
 
 https://github.com/animalinstinct/laravel-backpack-editorjs
 
 ## Requirements
 
-- Laravel-Editor.js git@github.com:alaminfirdows/laravel-editorjs.git
-
-Laravel-Editor.js uses to render editor's output.
+- Laravel-Editor.js git@github.com:alaminfirdows/laravel-editorjs.git uses to render editor's output.
 
 ## Installation
-
-Install and configure parser first, More information [https://github.com/alaminfirdows/laravel-editorjs](on the package page)
-
-```bash
-composer require alaminfirdows/laravel-editorjs
-php artisan vendor:publish --tag="laravel_editorjs-config"
-```
-Install this package
 
 ```bash
 composer require animalinstinct/laravel-backpack-editorjs
 ```
+
+Run the install script
+
+```bash
+php artisan backpack-editorjs:install
+```
+
+## Configuration
 
 ### For laravel 9,10
 
@@ -35,14 +33,6 @@ Add the LaravelBackpackEditorJsServiceProvider to the service providers list.
     // ...
 ]
 ```
-
-Run the install script
-
-```bash
-php artisan backpack-editorjs:install
-```
-
-## Configuration
 
 Add middleware to the Backpack base config. The middleware would set context to not use the Laravel-Editor.js parser for the backpack routes.
 
