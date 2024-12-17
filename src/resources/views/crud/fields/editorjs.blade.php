@@ -45,6 +45,10 @@
 
         const appUrl = '{{ config('app.url') }}';
 
-        const editor = window.EditorJS('{{ $field['name'] }}', appUrl ?? 'http://localhost:8000', value);
+        const editor = window.EditorJS({
+          fieldName: '{{ $field['name'] }}', 
+          appUrl: appUrl ?? 'http://localhost:8000', 
+          value: fieldValue
+        });
     })
   </script>

@@ -5,9 +5,17 @@ import Quote from '@editorjs/quote';
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
 
-export function editor(fieldName: string, appUrl: string, value?: OutputData) {
+interface Props {
+  fieldName: string;
+  appUrl: string;
+  value: string;
+}
+
+export function editor(props: Props) {
+  const { fieldName, appUrl, value } = props;
+  console.log('value:: ', props);
   const editor = new EditorJS({
-    data: value,
+    data: JSON.parse(value),
     holder: `editor_${fieldName}`,
     tools: {
       image: {
