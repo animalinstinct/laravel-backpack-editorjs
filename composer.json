@@ -9,6 +9,9 @@
       "email": "animalinstinct@protonmail.com"
     }
   ],
+  "require": {
+    "alaminfirdows/laravel-editorjs": "^1.1"
+  },
   "autoload": {
     "psr-4": {
       "AnimalInstinct\\LaravelBackpackEditorJs\\": "src/"
@@ -20,6 +23,5 @@
         "AnimalInstinct\\LaravelBackpackEditorJs\\LaravelBackpackEditorJsServiceProvider"
       ]
     }
-  },
-  "require": {}
+  }
 }
