@@ -2,6 +2,7 @@
   "name": "animalinstinct/laravel-backpack-editorjs",
   "description": "EditorJS field for the Laravel Backpack",
   "license": "MIT",
+  "version": "0.1.0-alpha.1",
   "authors": [
     {
       "name": "Aleksandr Makarov",
