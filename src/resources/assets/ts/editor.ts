@@ -1,21 +1,23 @@
-import EditorJS, { OutputData } from "@editorjs/editorjs";
+import EditorJS, { BlockToolConstructable, OutputData } from "@editorjs/editorjs";
 import ImageTool from "@editorjs/image";
 import Header from "@editorjs/header";
 import Quote from '@editorjs/quote';
+import Embed from '@editorjs/embed';
+import Delimiter from '@editorjs/delimiter';
+// import Warning from '@editorjs/warning';
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
 
 interface Props {
   fieldName: string;
   appUrl: string;
-  value: string;
+  value: string | null;
 }
 
 export function editor(props: Props) {
   const { fieldName, appUrl, value } = props;
-  console.log('value:: ', props);
   const editor = new EditorJS({
-    data: JSON.parse(value),
+    data: value ? JSON.parse(value) : {},
     holder: `editor_${fieldName}`,
     tools: {
       image: {
@@ -31,7 +33,25 @@ export function editor(props: Props) {
         },
       },
       header: Header,
-      quote: Quote
+      quote: Quote,
+      embed: {
+        class: Embed as any,
+        inlineToolbar: true,
+        config: {
+          services: {
+            youtube: true,
+            twitch: true,
+            soundcloud: true,
+            vimeo: true,
+            instagram: true,
+            facebook: true,
+            twitter: true,
+            tiktok: true,
+          },
+        },
+      },
+      delimiter: Delimiter,
+      // warning: Warning,
     },
     onChange: (_api, _event) => {
       editor

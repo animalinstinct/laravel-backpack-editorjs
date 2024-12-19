@@ -2,8 +2,9 @@
 
 namespace AnimalInstinct\LaravelBackpackEditorJs\app\Models\Traits;
 
-use AlAminFirdows\LaravelEditorJs\Facades\LaravelEditorJs;
-use Illuminate\Support\Facades\Log;
+use EditorJS\EditorJS;
+use Str;
+use View;
 
 trait HasEditorJsFields
 {
@@ -15,14 +16,46 @@ trait HasEditorJsFields
             if ($this->isValidJson($value)) {
                 $decodedValue = json_decode($value, true);
                 $languageKey = app()->getLocale() ?? 'en';
+                $translation = $decodedValue[$languageKey] ?? null;
 
-                if (isset($decodedValue[$languageKey]) && $this->isValidJson($decodedValue[$languageKey]) && $this->hasBlocksKey($decodedValue[$languageKey])) {
-                    return LaravelEditorJs::render($decodedValue[$languageKey]);
+                if (isset($translation) && $this->isValidJson($translation) && $this->hasBlocksKey($translation)) {
+                    return $this->render($translation);
                 }
             }
         }
 
         return parent::__get($key);
+    }
+
+
+    public function render(string $data): string
+    {
+        // try {
+        $configJson = json_encode(config('laravel-backpack-editorjs.config') ?: []);
+
+        // dd($data);
+        // dd(json_decode($data));
+
+
+        $editor = new EditorJS($data, $configJson);
+
+        $renderedBlocks = [];
+
+        foreach ($editor->getBlocks() as $block) {
+
+            $viewName = "laravel-backpack-editorjs::blocks." . Str::snake($block['type'], '-');
+
+            if (!View::exists($viewName)) {
+                $viewName = 'laravel-backpack-editorjs::blocks.not-found';
+            }
+
+            $renderedBlocks[] = View::make($viewName, ['data' => $block['data']])->render();
+        }
+
+        return implode($renderedBlocks);
+        // } catch (\Exception $e) {
+        //     throw new \Exception(json_encode('Zaloopa'));
+        // }
     }
 
     private function isValidJson($string)

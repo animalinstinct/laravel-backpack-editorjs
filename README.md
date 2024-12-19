@@ -4,9 +4,9 @@ Package adds the editorjs field to the Laravel Backpack admin panel.
 
 https://github.com/animalinstinct/laravel-backpack-editorjs
 
-## Requirements
+## Dependencies
 
-- Laravel-Editor.js git@github.com:alaminfirdows/laravel-editorjs.git uses to render editor's output.
+codex-team/editor.js - [Server-side implementation sample for the Editor.js](https://github.com/editor-js/editorjs-php). It contains data validation, HTML sanitization and converts output from Editor.js to the Block objects.
 
 ## Installation
 
@@ -89,3 +89,4 @@ $this->crud->addField([
     'label' => 'Description',
     'type' => EditorJsField::withBackup($this->crud->getCurrentEntry(), 'description', 'ckeditor'),
 ]);
+```

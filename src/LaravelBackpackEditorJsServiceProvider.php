@@ -11,6 +11,7 @@ class LaravelBackpackEditorJsServiceProvider extends ServiceProvider
         config(['laravel-backpack-editorjs.context' => 'default']);
 
         $this->loadRoutes();
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'laravel-backpack-editorjs');
         $this->publishFiles();
     }
 
@@ -25,11 +26,13 @@ class LaravelBackpackEditorJsServiceProvider extends ServiceProvider
 
     public function publishFiles()
     {
-        $views = [__DIR__ . '/resources/views' => resource_path('views/vendor/backpack')];
+        $views = [__DIR__ . '/resources/views/crud' => resource_path('views/vendor/backpack')];
         $js = [__DIR__ . '/resources/assets/js' => public_path('packages/editorjs')];
+        $config = [__DIR__ . '/config/laravel-backpack-editorjs.php' => config_path('laravel-backpack-editorjs.php')];
 
         $this->publishes($views, 'views');
         $this->publishes($js, 'js');
+        $this->publishes($config, 'config');
     }
 
     public function loadRoutes()

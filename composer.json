@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "alaminfirdows/laravel-editorjs": "^1.1"
+    "codex-team/editor.js": "^2.0"
   },
   "autoload": {
     "psr-4": {

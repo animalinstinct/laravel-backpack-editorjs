@@ -18,10 +18,14 @@ trait EditorJsField
      */
     public static function withBackup($model, string $fieldName, string $backupFieldType = 'text')
     {
-        if (self::isValidEditorJsContent($model->$fieldName)) {
-            return 'editorjs';
+        if ($model && $model->getAttribute($fieldName)) {
+            if (self::isValidEditorJsContent($model->$fieldName)) {
+                return 'editorjs';
+            } else {
+                return $backupFieldType;
+            }
         } else {
-            return $backupFieldType;
+            return 'editorjs';
         }
     }
 
