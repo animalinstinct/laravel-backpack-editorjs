@@ -26,7 +26,7 @@ class LaravelBackpackEditorJsServiceProvider extends ServiceProvider
 
     public function publishFiles()
     {
-        $views = [__DIR__ . '/resources/views/crud' => resource_path('views/vendor/backpack')];
+        $views = [__DIR__ . '/resources/views/crud' => resource_path('views/vendor/backpack/crud')];
         $js = [__DIR__ . '/resources/assets/js' => public_path('packages/editorjs')];
         $config = [__DIR__ . '/config/laravel-backpack-editorjs.php' => config_path('laravel-backpack-editorjs.php')];
 
