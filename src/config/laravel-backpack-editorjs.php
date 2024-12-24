@@ -29,12 +29,6 @@ return [
                             'allowedTags' => 'i,b,a[href],code[class],mark[class]',
                         ],
                     ],
-                ],
-                'meta' => [
-                    'type' => 'array',
-                    'data' => [
-                        'type' => 'array'
-                    ]
                 ]
             ],
             'linkTool' => [
@@ -133,6 +127,32 @@ return [
                 'html' => [
                     'type' => 'string',
                     'allowedTags' => '*',
+                ],
+            ],
+            'embed' => [
+                'service' => [
+                    'type' => 'string',
+                    'allowedTags' => '*',
+                ],
+                'source' => [
+                    'type' => 'string',
+                    'allowedTags' => '*',
+                ],
+                'embed' => [
+                    'type' => 'string',
+                    'allowedTags' => '*',
+                ],
+                'width' => [
+                    'type' => 'integer',
+                    'required' => false,
+                ],
+                'height' => [
+                    'type' => 'integer',
+                    'required' => false,
+                ],
+                'caption' => [
+                    'type' => 'string',
+                    'allowedTags' => 'i,b,a[href],code[class],mark[class]',
                 ],
             ],
         ],
