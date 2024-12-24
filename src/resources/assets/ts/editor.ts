@@ -5,6 +5,7 @@ import Quote from '@editorjs/quote';
 import Embed from '@editorjs/embed';
 import Delimiter from '@editorjs/delimiter';
 // import Warning from '@editorjs/warning';
+import EditorjsList from '@editorjs/list';
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
 
@@ -51,6 +52,13 @@ export function editor(props: Props) {
         },
       },
       delimiter: Delimiter,
+      list: {
+        class: EditorjsList as any,
+        inlineToolbar: true,
+        config: {
+          defaultStyle: 'unordered'
+        },
+      },
       // warning: Warning,
     },
     onChange: (_api, _event) => {

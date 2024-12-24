@@ -2,7 +2,7 @@
   "name": "animalinstinct/laravel-backpack-editorjs",
   "description": "EditorJS field for the Laravel Backpack",
   "license": "MIT",
-  "version": "0.1.0-alpha.1",
+  "version": "0.2.1-alpha",
   "authors": [
     {
       "name": "Aleksandr Makarov",
@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "codex-team/editor.js": "^2.0"
+    "codex-team/editor.js": "v2.0.7"
   },
   "autoload": {
     "psr-4": {
