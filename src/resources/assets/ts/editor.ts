@@ -6,6 +6,9 @@ import Embed from '@editorjs/embed';
 import Delimiter from '@editorjs/delimiter';
 // import Warning from '@editorjs/warning';
 import EditorjsList from '@editorjs/list';
+import Paragraph from '@editorjs/paragraph';
+import Raw from '@editorjs/raw';
+import Checklist from '@editorjs/checklist';
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
 
@@ -60,6 +63,9 @@ export function editor(props: Props) {
         },
       },
       // warning: Warning,
+      paragraph: Paragraph,
+      raw: Raw,
+      // checklist: Checklist
     },
     onChange: (_api, _event) => {
       editor

@@ -26,8 +26,9 @@
   @csrf
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-        const fieldValue = `{!! isset($field['value']) ? $field['value'] : '' !!}`;
+        const fieldValue = JSON.parse('{!! addslashes(json_encode(isset($field['value']) ? $field['value'] : '')) !!}');
 
+        
         function isJSONString(str) {
           try {
             JSON.parse(str);
@@ -44,6 +45,7 @@
         }
 
         const appUrl = '{{ config('app.url') }}';
+
 
         const editor = window.EditorJS({
           fieldName: '{{ $field['name'] }}', 
