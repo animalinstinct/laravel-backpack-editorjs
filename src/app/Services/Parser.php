@@ -43,28 +43,8 @@ class Parser
 
                 return implode($renderedBlocks);
             }
-        }
-    }
 
-
-    /**
-     * Check if the given string is valid EditorJs content.
-     * 
-     * @param string|null $str
-     * @return bool
-     */
-    private static function isValidEditorJsContent(string $str): bool
-    {
-        if (empty($str)) {
-            return false;
-        }
-
-        try {
-            $parsed = json_decode($str, true);
-            return isset($parsed['blocks']);
-        } catch (\Exception $e) {
-            \Log::error('Invalid JSON content for EditorJs: ' . $e->getMessage());
-            return false;
+            return $data;
         }
     }
 
