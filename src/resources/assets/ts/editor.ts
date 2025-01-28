@@ -23,6 +23,7 @@ export function editor(props: Props) {
   const editor = new EditorJS({
     data: value ? JSON.parse(value) : {},
     holder: `editor_${fieldName}`,
+    inlineToolbar: true,
     tools: {
       image: {
         class: ImageTool,
@@ -36,8 +37,14 @@ export function editor(props: Props) {
           },
         },
       },
-      header: Header,
-      quote: Quote,
+      header: {
+        class: Header as any,
+        inlineToolbar: true,
+      },
+      quote: {
+        class: Quote as any,
+        inlineToolbar: true
+      },
       embed: {
         class: Embed as any,
         inlineToolbar: true,
@@ -63,8 +70,14 @@ export function editor(props: Props) {
         },
       },
       // warning: Warning,
-      paragraph: Paragraph,
-      raw: Raw,
+      paragraph: {
+        class: Paragraph as any,
+        inlineToolbar: true
+      },
+      raw: {
+        class: Raw as any,
+        inlineToolbar: true
+      },
       // checklist: Checklist
     },
     onChange: (_api, _event) => {
